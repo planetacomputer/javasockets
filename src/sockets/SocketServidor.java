@@ -16,6 +16,7 @@ import java.io.*;
  */
 public class SocketServidor
 {    
+	
     public static void main (String [] args)
     {
         // Se instancia la clase principal para que haga todo lo que tiene que
@@ -26,8 +27,10 @@ public class SocketServidor
      /**
       * Constructor por defecto. Hace todo lo que hace el ejemplo.
       */
+    public static int contador = 0;
     public SocketServidor()
     {
+    	
         try
         {
             // Se crea un socket servidor atendiendo a un determinado puerto.
@@ -39,6 +42,7 @@ public class SocketServidor
             while(true){
             System.out.println ("Esperando cliente");
             Socket cliente = socket.accept();
+            contador++;
             System.out.println ("Conectado con cliente de " + cliente.getInetAddress());
             
             // Se hace que el cierre del socket sea "gracioso". Esta llamada s�lo
@@ -58,6 +62,7 @@ public class SocketServidor
             System.out.println ("Enviado 22");
             buffer.writeUTF ("Hola");
             System.out.println ("Enviado Hola");
+            System.out.println ("Me han conectado " + contador + " veces");
             
             // Se prepara un flujo de salida para objetos y un objeto para enviar*/
             DatoSocket dato = new DatoSocket();
